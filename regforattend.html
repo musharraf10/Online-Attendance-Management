@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .navbar {
+            background-color: #2C2C54;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+            color: #2C2C54;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-container table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .form-container th,
+        .form-container td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .form-container th:last-child,
+        .form-container td:last-child {
+            border-right: none;
+        }
+
+        .form-container th {
+            background-color: #2C2C54;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: #555;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="number"]:focus {
+            outline: none;
+            border-color: #FF4081;
+        }
+
+        .form-container button {
+            background-color: #FF4081;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            float: right;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #E91E63;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Attendance App</h1>
+    </div>
+
+    <div class="form-container">
+        <h2>Student Details</h2>
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">S. No</th>
+                    <th style="width: 30%;">Roll Number</th>
+                    <th style="width: 30%;">Student Name</th>
+                    <th style="width: 30%;">Mobile Number</th>
+                    <th style="width: 5%;"></th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                <!-- Table rows will be added dynamically -->
+            </tbody>
+        </table>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <button onclick="saveData()">Save</button>
+    </div>
+
+  <div id="result"></div>
+
+  <script>
+    var department = getParameterByName('department');
+    var year = getParameterByName('year');
+    var section = getParameterByName('section');
+
+    var table = document.getElementById('studentTable');
+    var tableBody = document.getElementById('studentTableBody');
+
+    // Load the saved data when the page is loaded
+    window.onload = loadData;
+
+    // Function to load the saved data from localStorage
+    function loadData() {
+      var localStorageKey = getLocalStorageKey();
+      var jsonData = localStorage.getItem(localStorageKey);
+
+      var studentData = JSON.parse(jsonData) || [];
+
+      populateTable(studentData);
+    }
+
+    // Function to save the table data in localStorage
+    function saveData() {
+      var studentData = [];
+
+      for (var i = 1; i < table.rows.length; i++) { // Start from 1 to skip the header row
+        var row = table.rows[i];
+        var rollNumber = row.cells[1].querySelector('input').value;
+        var studentName = row.cells[2].querySelector('input').value;
+        var mobileNumber = row.cells[3].querySelector('input').value;
+
+        var student = {
+          rollNumber: rollNumber,
+          studentName: studentName,
+          mobileNumber: mobileNumber
+        };
+
+        studentData.push(student);
+      }
+
+      var localStorageKey = getLocalStorageKey();
+      var jsonData = JSON.stringify(studentData);
+
+      localStorage.setItem(localStorageKey, jsonData);
+
+      alert('Data saved successfully!');
+    }
+
+    function populateTable(studentData) {
+      tableBody.innerHTML = '';
+
+      for (var i = 0; i < studentData.length; i++) {
+        var student = studentData[i];
+        var newRow = createRow(i + 1, student.rollNumber, student.studentName, student.mobileNumber);
+        tableBody.appendChild(newRow);
+      }
+    }
+
+    function addRow() {
+      var rowCount = tableBody.rows.length;
+      var newRow = createRow(rowCount + 1, '', '', '');
+      tableBody.appendChild(newRow);
+    }
+
+    function createRow(sno, rollNumber, studentName, mobileNumber) {
+      var newRow = document.createElement('tr');
+      var snoCell = document.createElement('td');
+      snoCell.textContent = sno;
+      newRow.appendChild(snoCell);
+
+      var rollNumberCell = document.createElement('td');
+      var rollNumberInput = document.createElement('input');
+      rollNumberInput.type = 'text';
+      rollNumberInput.value = rollNumber;
+      rollNumberCell.appendChild(rollNumberInput);
+      newRow.appendChild(rollNumberCell);
+
+      var studentNameCell = document.createElement('td');
+      var studentNameInput = document.createElement('input');
+      studentNameInput.type = 'text';
+      studentNameInput.value = studentName;
+      studentNameCell.appendChild(studentNameInput);
+      newRow.appendChild(studentNameCell);
+
+      var mobileNumberCell = document.createElement('td');
+      var mobileNumberInput = document.createElement('input');
+      mobileNumberInput.type = 'text';
+      mobileNumberInput.value = mobileNumber;
+      mobileNumberCell.appendChild(mobileNumberInput);
+      newRow.appendChild(mobileNumberCell);
+
+      var deleteCell = document.createElement('td');
+      var deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.classList.add('delete-button');
+      deleteButton.onclick = function() {
+        deleteRow(this); // Pass the delete button element to the deleteRow function
+      };
+      deleteCell.appendChild(deleteButton);
+      newRow.appendChild(deleteCell);
+
+      return newRow;
+    }
+
+    function deleteRow(button) {
+      var row = button.parentNode.parentNode;
+      var rowIndex = row.rowIndex;
+      row.parentNode.removeChild(row); // Remove the row from the table
+      updateSerialNumbers();
+    }
+
+    function updateSerialNumbers() {
+      var rows = tableBody.getElementsByTagName('tr');
+      for (var i = 0; i < rows.length; i++) {
+        var snoCell = rows[i].cells[0];
+        snoCell.textContent = i + 1;
+      }
+    }
+
+    function getLocalStorageKey() {
+      return department + '_' + year + '_' + section;
+    }
+
+    function getParameterByName(name) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+      var results = regex.exec(location.search);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Submit event handler for the attendance form
+    document.getElementById('studentForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      saveData();
+      document.getElementById('result').textContent = 'Data saved successfully!';
+    });
+  </script>
+</body>
+</html>

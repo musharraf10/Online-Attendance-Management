@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Registration</title>
+    <style>
+        body {
+            background-image: url('https://thumbs.dreamstime.com/b/business-graph-books-register-color-background-54704625.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.4); /* Increased transparency */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid red; /* Border color set to red */
+            animation: pulse 2s infinite;
+        }
+
+        .form-heading {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #F44336;
+        }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .highlight {
+            text-decoration: underline;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        @keyframes pulse {
+            0% {
+                border-color: red; /* Border color set to red */
+            }
+            50% {
+                border-color: #4CAF50;
+            }
+            100% {
+                border-color: red; /* Border color set to red */
+            }
+        }
+    </style>
+    <script>
+        function toggleForms() {
+            var registerForm = document.getElementById("register-form");
+            var loginForm = document.getElementById("login-form");
+            var switchTextRegister = document.getElementById("switch-text-register");
+            var switchTextLogin = document.getElementById("switch-text-login");
+
+            if (registerForm.style.display === "none") {
+                registerForm.style.display = "block";
+                loginForm.style.display = "none";
+                switchTextRegister.classList.add("highlight");
+                switchTextLogin.classList.remove("highlight");
+            } else {
+                registerForm.style.display = "none";
+                loginForm.style.display = "block";
+                switchTextRegister.classList.remove("highlight");
+                switchTextLogin.classList.add("highlight");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+    
+        <form id="login-form" style="display: block;" action="https://nriit.ac.in/college/facultylog.php" method="POST">
+            <h2 class="form-heading">Login</h2>
+            <input type="text" name="userid" placeholder="User ID" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+            <p class="switch-text" id="switch-text-register" onclick="toggleForms()">Don't have an account? Register here</p>
+        </form>
+
+        <form id="register-form" style="display: none;" action="https://nriit.ac.in/college/facultyrg.php" method="POST">
+            <h2 class="form-heading">Register</h2>
+            <input type="text" name="userid" placeholder="User ID" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="text" name="name" placeholder="Name" required><br>
+            <input type="text" name="department" placeholder="Department" required><br>
+            <input type="text" name="mobile" placeholder="Mobile" required><br>
+            <input type="submit" value="Register">
+            <p class="switch-text" id="switch-text-login" onclick="toggleForms()">Already have an account? Login here</p>
+        </form>
+
+        <div id="message-container">
+            <p class="message" id="success-message"></p>
+            <p class="message" id="error-message"></p>
+        </div>
+
+    </div>
+
+    <script>
+        function showMessage(isSuccess) {
+            var successMessage = document.getElementById("success-message");
+            var errorMessage = document.getElementById("error-message");
+
+            if (isSuccess) {
+                successMessage.innerText = "Registration successful! Redirecting to login page...";
+                errorMessage.innerText = "";
+                successMessage.classList.add("success");
+                errorMessage.classList.remove("error");
+            } else {
+                successMessage.innerText = "";
+                errorMessage.innerText = "Registration failed!";
+                successMessage.classList.remove("success");
+                errorMessage.classList.add("error");
+            }
+        }
+    </script>
+</body>
+</html>

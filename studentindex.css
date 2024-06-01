@@ -1,0 +1,205 @@
+    /* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+        .header {
+            background-color: #6666ff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .navbar-toggler-icon {
+            background: none;
+            border: none;
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007bff;
+        }
+
+        .animated-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .animated-link::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .animated-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+       .user-info {
+        font-weight: bold;
+        color: blue; /* Add this line to change the color to blue */
+    }
+
+        .menu-icon {
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 4px auto;
+            background-color: #333;
+        }
+        
+
+.wrapper{
+  width: 450px;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .icons{
+  display: flex;
+}
+header .icons span{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child{
+  margin-right: -10px;
+}
+header .icons span:hover{
+  background: #f2f2f2;
+}
+header .current-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.calendar{
+  padding: 20px;
+}
+.calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days{
+  margin-bottom: 20px;
+}
+.calendar li{
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days .inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: #fff;
+}
+.days li::before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before{
+  background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+  background: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+        padding: 10px; 
+    }
+
+    header .current-date {
+        font-size: 1.2rem;
+    }
+}
+
+.absent::before
+{
+    height: 40px;
+    width: 40px;
+    background-color: red;
+    color: white; 
+    border-radius: 50%;
+    margin:0;
+    
+    }
+.present::before {
+    background-color: green; 
+    color: white; 
+    border-radius: 50%;
+    margin:0;
+        }
+.orange::before{
+    background-color: orange; 
+    color: white; 
+    margin:0;
+    border-radius: 50%;
+
+}
+.container{
+    left:20px;
+}
+

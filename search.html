@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Information Search</title>
+    <style>
+      
+     .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('https://cdn.wallpapersafari.com/61/75/Ymx59h.png');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .form:before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        z-index: -1;
+        background: inherit;
+        transform: scaleX(-1);
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        width: 300px;
+        margin-bottom: 20px;
+      }
+      button[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #008CBA;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button[type="submit"]:hover {
+        background-color: #006080;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Student Information Search</h1>
+      <form class="form" action="https://nriit.ac.in/college/retrieve.php" method="GET">
+        <label for="roll">Enter Roll Number:</label>
+        <input type="text" id="roll" name="roll" required>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </body>
+</html>

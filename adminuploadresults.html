@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload Results</h2>
+    <form id="uploadForm" method="POST" action="https://nriit.ac.in/college/uploadresults.php" enctype="multipart/form-data">
+        <label for="semester">Select Semester:</label>
+        <select id="semester" name="semester" required>
+            <option value="">Select Semester</option>
+            <option value="1_1">1_1</option>
+            <option value="1_2">1_2</option>
+            <option value="2_1">2_1</option>
+            <option value="2_2">2_2</option>
+            <option value="3_1">3_1</option>
+            <option value="3_2">3_2</option>
+            <option value="4_1">4_1</option>
+            <option value="4_2">4_2</option>
+        </select><br><br>
+        <label for="excel">Select Excel File:</label>
+        <input type="file" id="excel" name="excel" accept=".xls, .xlsx ,.pdf" required><br><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

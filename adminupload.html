@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Upload</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            background: linear-gradient(45deg, #FF512F, #3D5AFE);
+            margin-top: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section {
+            flex-basis: calc(33.33% - 40px);
+            height: 200px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+        }
+
+        .section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .section a {
+            text-decoration: none;
+        }
+
+        .results {
+            background-color: #FF512F;
+        }
+
+        .student-details {
+            background-color: #FFC000;
+        }
+
+        .job-opportunities {
+            background-color: #00C853;
+        }
+
+        .faculty-access {
+            background-color: #87CEEB; /* Change to the desired color for the fourth box */
+        }
+
+        .attendance-access {
+            background-color: #E57373; /* Change to the desired color for the fifth box */
+        }
+
+        .box-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .box-title {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .box-description {
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <h2>Services by Admin</h2>
+    <div class="container">
+        <a href="https://nriit.ac.in/college/adminuploadresults.html" class="section results">
+            <div class="box-icon">&#128203;</div>
+            <div class="box-title">Results</div>
+            <div class="box-description">Upload and manage student results</div>
+        </a>
+        <a href="https://nriit.ac.in/college/search.html" class="section student-details">
+            <div class="box-icon">&#128218;</div>
+            <div class="box-title">Student Details</div>
+            <div class="box-description">Access student information</div>
+        </a>
+        <a href="https://nriit.ac.in/college/jobsupload.html" class="section job-opportunities">
+            <div class="box-icon">&#128221;</div>
+            <div class="box-title">Job/Intern Opportunities</div>
+            <div class="box-description">Upload and manage job/internship postings</div>
+        </a>
+        <a href="https://nriit.ac.in/college/facultydisplay.php" class="section faculty-access">
+            <div class="box-icon">&#128100;</div>
+            <div class="box-title">Faculty Access</div>
+            <div class="box-description">Access faculty-specific features</div>
+        </a>
+        <a href="https://nriit.ac.in/college/adminindex.php" class="section attendance-access">
+            <div class="box-icon">&#128202;</div>
+            <div class="box-title">Students attendance</div>
+            <div class="box-description">attendance-forms</div>
+        </a>
+    </div>
+</body>
+</html>
